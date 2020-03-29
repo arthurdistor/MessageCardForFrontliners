@@ -1,0 +1,54 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="create_css.css">
+<script  src="https://raw.githubusercontent.com/eligrey/FileSaver.js/master/dist/FileSaver.min.js"></script>
+<script src="main.js"></script>
+<script>
+        function getInputValue(){
+            // Selecting the input element and get its value 
+            var name = document.getElementById("title").value;
+            var message = document.getElementById("text").value;
+            // Displaying the value
+          
+	addTextToImage(message, name);
+	downloadImage();
+        }
+
+
+    </script>
+<script>
+var thisCanvas = document.getElementById("canvas");
+var ctx = thisCanvas.getContext("2d");
+ctx.font = "30px Arial";
+ctx.fillText("Hello World",10,50);
+
+function downloadImage(){
+        var canvas = document.getElementById("thisCanvas");
+    	canvas.toBlob(function(blob) {
+    		saveAs(blob, "My Message to Frontliners.png");
+    	});
+    }
+</script>
+</head>
+<body>
+<div id="wrapper">
+
+  <form id="paper" >
+
+    <div id="margin">Your Name: <input id="title" type="text" maxlength="30"></div>
+    <textarea placeholder="Enter your message to our frontliners." id="text" maxlength="500" rows="5" style="overflow: hidden; word-wrap: break-word; resize: none; height: 160px; "></textarea>
+    <br>
+    <input id="button" onclick="getInputValue()"; value="Create thank you card">
+
+  </form>
+<BR> <BR>
+<canvas id="canvas" width="640" height="640" style="
+    margin-top: 20px;
+">
+Your browser does not support this website.
+</canvas>
+</div>
+
+
+</body>
+</html>
